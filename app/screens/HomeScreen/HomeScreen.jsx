@@ -1,5 +1,4 @@
 import {  View, Text, FlatList, Image } from "react-native"
-import axios from 'axios';
 import ListScroll from "../../components/ListScroll/ListScroll";
 import TaskItem from "../../components/TaskItem/TaskItem";
 import ButtonAddTask from "../../components/ButtonAddTask/ButtonAddTask";
@@ -16,7 +15,7 @@ const { getTodos } = useTodoService()
 export default function HomeScreen({navigation}) {
     const [todos, setTodos] = useState([]);
     const [isModalSee, setIsModalSee] = useState(false);
-    const [isLoading, setIsLoading] = useState(true)
+    // const [isLoading, setIsLoading] = useState(true) 
 
     const isModalToggle = () => {
         setIsModalSee(!isModalSee)
@@ -47,6 +46,8 @@ export default function HomeScreen({navigation}) {
         keyExtractor={item => item.id}
     /> 
     : null
+
+
     return (
       <View className="h-screen w-full relative">
             <ListScroll/>
@@ -56,10 +57,9 @@ export default function HomeScreen({navigation}) {
 
             { contentTask }
 
-           
             <ButtonAddTask isClick={() => isModalToggle()}/>
 
-          {/* <Button title='Settings' onPress={() => navigation.navigate('Settings')}/> */}
+            {/* <Button title='Settings' onPress={() => navigation.navigate('Settings')}/> */}
       </View>
     )
 }
